@@ -26,6 +26,33 @@ pass copyq email/gmail
 2. Add the `copyq.bash` file to `~/.password-store/.extensions`
    with executable rights.
 
+## Enabling shell auto-completion
+
+`pass copyq` has (almost) identical shell auto-completion semantics with
+`pass show`. Hence you just need to find the relevant auto-completion
+file of the shell of your preference and add `copyq` option next to
+`show` command.
+
+For instance, in Ubuntu GNU/Linux 16.04.4 LTS, open
+`/usr/share/bash-completion/completions/pass` with a text
+editor and edit the below given part
+
+```bash
+show|-*)
+    COMPREPLY+=($(compgen -W "-c --clip" -- ${cur}))
+    _pass_complete_entries 1
+    ;;
+```
+
+as follows:
+
+```bash
+copyq|show|-*)
+    COMPREPLY+=($(compgen -W "-c --clip" -- ${cur}))
+    _pass_complete_entries 1
+    ;;
+```
+
 ## License
 
 Copyright &copy; 2018 [Volkan Yazıcı](http://vlkan.com/)
