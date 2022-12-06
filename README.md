@@ -56,8 +56,9 @@ copyq|show|-*)
 ### Fish shell
 
 ```sh
-mkdir -p ~/.config/fish/completions
-cp ./completions/pass.fish ~/.config/fish/completions 
+fish
+mkdir $__fish_config_dir/completions
+cp ./completions/pass.fish $__fish_config_dir/completions 
 ```
 
 ## License
