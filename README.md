@@ -53,6 +53,14 @@ copyq|show|-*)
     ;;
 ```
 
+### Fish shell
+
+```bash
+fish
+mkdir $__fish_config_dir/completions
+cp ./completions/pass.fish $__fish_config_dir/completions 
+```
+
 ## License
 
 Copyright &copy; 2018 [Volkan Yazıcı](http://vlkan.com/)
