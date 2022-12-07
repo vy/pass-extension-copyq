@@ -3,7 +3,7 @@
 function clip() {
     local sleep_argv0="password store sleep on display $DISPLAY"
 
-    pkill -f "^$sleep_argv0" 2>/dev/null && sleep 0.5
+    pkill -f "^$sleep_argv0" 1>/dev/null && sleep 0.5
 
     if ! copyq copy -- "$1" >/dev/null 2>&1; then
         echo "Error: Could not copy data to the clipboard" >&2
@@ -13,7 +13,7 @@ function clip() {
     (
         ( exec -a "$sleep_argv0" sleep "$CLIP_TIME" )
         copyq -e "if (size() > 0) { select(0); } else { copy(''); }"
-    ) 1>/dev/null & disown
+    ) 1>/dev/null 2>/dev/null & disown
 
     echo "Copied $2 to clipboard using copyq. Will clear in $CLIP_TIME seconds."
 }
